@@ -2,7 +2,7 @@ const express = require("express");
 //const bodyParser = require("body-parser"); //body-parser is depricated https://www.folkstalk.com/2022/09/body-parser-deprecated-bodyparser-with-code-examples.html
 const request = require("request");
 const https = require("https");
-require("doten").config();
+require("dotenv").config();
 
 const app = express();
 
@@ -40,8 +40,7 @@ app.post("/", function(req, res){
 
   const options = {
     method: "POST",
-    //auth: "mairi:bbbee61495a258937c91fa2d4fed8100-us21"
-    auth: "mairi:" + apiKey;
+    auth: "mairi:" + apiKey
   };
 
   const request = https.request(url, options, function(response){
