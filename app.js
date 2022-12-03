@@ -2,6 +2,7 @@ const express = require("express");
 //const bodyParser = require("body-parser"); //body-parser is depricated https://www.folkstalk.com/2022/09/body-parser-deprecated-bodyparser-with-code-examples.html
 const request = require("request");
 const https = require("https");
+require("doten").config();
 
 const app = express();
 
@@ -32,12 +33,15 @@ app.post("/", function(req, res){
   };
 
   const jsonData = JSON.stringify(data);
+  const listId = process.env.LIST_ID;
+  const apiKey = process.env.API_KEY;
 
-  const url = "https://us21.api.mailchimp.com/3.0/lists/d2c7f98951";
+  const url = "https://us21.api.mailchimp.com/3.0/lists/" + listId;
 
   const options = {
     method: "POST",
-    auth: "mairi:bbbee61495a258937c91fa2d4fed8100-us21"
+    //auth: "mairi:bbbee61495a258937c91fa2d4fed8100-us21"
+    auth: "mairi:" + apiKey;
   };
 
   const request = https.request(url, options, function(response){
@@ -63,8 +67,5 @@ app.post("/failure.html", function(req, res){
 });
 
 app.listen(process.env.PORT || 3000, function(){
-  console.log("I'm listening on port 3000.");
+  console.log("I'm listening, my darling.");
 });
-
-//API Key: bbbee61495a258937c91fa2d4fed8100-us21
-// Mailchimp audience ID/list ID: d2c7f98951
