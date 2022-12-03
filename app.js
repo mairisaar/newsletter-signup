@@ -2,7 +2,7 @@ const express = require("express");
 //const bodyParser = require("body-parser"); //body-parser is depricated https://www.folkstalk.com/2022/09/body-parser-deprecated-bodyparser-with-code-examples.html
 const request = require("request");
 const https = require("https");
-require("dotenv").config();
+require('dotenv').config();
 
 const app = express();
 
